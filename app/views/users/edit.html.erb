@@ -1,0 +1,33 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <%= @user.errors.count %>errors prohibited this obj from being saved:Title can't be blank	
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<h1>User info</h1>
+
+			<%= form_for(@user) do |f| %>
+
+			<span>Name <%= f.text_field :name, autofocus: true %></span><br>
+
+			<p>Image</p>
+			<p><%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %></p>
+
+			<p>
+				<span>Introduction <%= f.text_area :introduction %></span>
+			</p>
+
+			<%= f.submit "Update User" %>
+
+			<% end %>
+		</div>
+	</div>
+</div>
